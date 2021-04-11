@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class MyRequestsPage extends StatefulWidget {
-  MyRequestsPage({Key key, this.title}) : super(key: key);
+class RecentChangesPage extends StatefulWidget {
+  RecentChangesPage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyRequestsPageState createState() => _MyRequestsPageState();
+  _RecentChangesPageState createState() => _RecentChangesPageState();
 }
 
-class _MyRequestsPageState extends State<MyRequestsPage> {
+class _RecentChangesPageState extends State<RecentChangesPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -17,7 +17,7 @@ class _MyRequestsPageState extends State<MyRequestsPage> {
       appBar: AppBar(
           title: Container(
               alignment: Alignment.center,
-              child: Text("MyRequestsPageWidget")
+              child: Text("RecentChangesPageWidget")
           )
       ),
       body: Text('placeholder'),
