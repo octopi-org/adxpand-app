@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:applify/login/login.dart';
+import 'package:drawerbehavior/drawerbehavior.dart';
 import 'package:applify/my-visualisations.dart';
 import 'package:applify/my-requests.dart';
+import 'package:applify/dashboard.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -13,11 +15,149 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+
+
 class _MyHomePageState extends State<MyHomePage> {
+  int selectedMenuItemId;
+  final menu = new Menu(
+    items: [
+      new MenuItem(
+        id: 0,
+        title: 'MY DASHBOARD',
+      ),
+      new MenuItem(
+        id: 1,
+        title: 'MY VISUALISATIONS',
+      ),
+      new MenuItem(
+        id: 2,
+        title: 'REQUESTS STATUS',
+      ),
+      new MenuItem(
+        id: 3,
+        title: 'SETTINGS',
+      ),
+      new MenuItem(
+        id: 4,
+        title: 'LOGOUT',
+      ),
+    ]
+  );
+
+  @override
+  void initState() {
+    selectedMenuItemId = menu.items[0].id;
+    super.initState();
+  }
+
+  Widget headerView(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.fromLTRB(16, 12, 16, 0),
+          child: Row(
+            children: <Widget>[
+              new Container(
+                  width: 48.0,
+                  height: 48.0,
+                  decoration: new BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: new DecorationImage(
+                          fit: BoxFit.fill,
+                          image: AssetImage("assets/update-business-goals.png")))),
+              Container(
+                  margin: EdgeInsets.only(left: 16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "King Crab",
+                        style: Theme.of(context)
+                            .textTheme
+                            .subtitle1
+                            .copyWith(color: Colors.white),
+                      ),
+                      Text(
+                        "kingofcrabs@nus.edu",
+                        style: Theme.of(context)
+                            .textTheme
+                            .subtitle2
+                            .copyWith(color: Colors.white.withAlpha(200)),
+                      )
+                    ],
+                  ))
+            ],
+          ),
+        ),
+        Divider(
+          color: Colors.white.withAlpha(200),
+          height: 16,
+        )
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    return DrawerScaffold(
+      appBar: AppBar(
+        title: Text('This is an appbar'),
+      ),
+      drawers: [
+        SideDrawer(
+            headerView: headerView(context),
+            degree: 45,
+            direction: Direction.right,
+            percentage: 0.6,
+            menu: menu,
+            selectedItemId: selectedMenuItemId,
+            onMenuItemSelected: (itemId) {
+              setState(() {
+                selectedMenuItemId = itemId;
+              });
+            },
+            itemBuilder: (BuildContext context, MenuItem menuItem,
+                bool isSelected) {
+              return Container(
+                color: isSelected
+                    ? Theme
+                    .of(context)
+                    .accentColor
+                    .withOpacity(0.7)
+                    : Colors.transparent,
+                padding: EdgeInsets.fromLTRB(24, 16, 24, 16),
+                child: Text(
+                  menuItem.title,
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .subtitle1
+                      ?.copyWith(
+                      color: isSelected ? Colors.black87 : Colors.white70),
+                ),
+              );
+            }
+        ),
+      ],
+      builder: (context, id) {
+        if (id == 0) {
+          return Dashboard();
+        } else if (id == 1) {
+          return MyVisualisationsPage();
+        } else if (id == 2) {
+          return MyRequestsPage();
+        } else if (id == 3) {
+
+        }
+      },
+    );
+  }
+
+
+  /*
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Container(
@@ -39,18 +179,80 @@ class _MyHomePageState extends State<MyHomePage> {
           */
         ),
         endDrawer: NavDrawer(),
-        body: Text('this screen is where the top 3 metric visualisations will go')
+        body: TopThreeVis(),
+    );
+  }
+  */
+}
+
+
+
+
+
+
+
+class Homescreen extends StatefulWidget {
+  Homescreen({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _HomescreenState createState() => _HomescreenState();
+}
+
+class _HomescreenState extends State<Homescreen> {
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      body: GestureDetector(
+        onPanUpdate: (details) {
+          if (details.delta.dx > 0) {
+
+          }
+        },
+        child: Text('i will never forgive the japanese'),
+      ),
     );
   }
 }
 
 
+
+
+/*
+A vanilla drawer
+
 class NavDrawer extends StatelessWidget {
   final String user = 'King Crab';
-
   @override
   Widget build(BuildContext context) {
-    return Drawer(
+    return DrawerScaffold(
+        drawers: [
+          SideDrawer(
+            degree: 45,
+            direction: Direction.right,
+            percentage: 0.6,
+            itemBuilder: (BuildContext context, MenuItem menuItem, bool isSelected) {
+              return Container(
+                color: isSelected
+                  ? Theme.of(context).accentColor.withOpacity(0.7)
+                  : Colors.transparent,
+                padding: EdgeInsets.fromLTRB(24, 16, 24, 16),
+                child: Text(
+                  menuItem.title,
+                  style: Theme.of(context).textTheme.subhead?.copyWith(
+                    color: isSelected ? Colors.black87 : Colors.white70),
+                ),
+              );
+            }
+          )
+        ],
+    );
+
+
+    /*
+    Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
@@ -123,8 +325,13 @@ class NavDrawer extends StatelessWidget {
         ],
       )
     );
+    */
   }
 }
+*/
+
+
+
 
 
 
