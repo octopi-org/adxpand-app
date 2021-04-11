@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:applify/login/login.dart';
-import 'package:applify/home.dart';
 
 void main() {
   runApp(
@@ -10,6 +9,6 @@ void main() {
         ),
         home: Login(),
         debugShowCheckedModeBanner: false,
-      ));
-
+      )
+  );
 }

@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:applify/main.dart';
+import 'file:///C:/Users/samue/OneDrive/Documents/GitHub/applify/changes/lib/main-home/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

@@ -13,7 +13,7 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(0, 128, 255, 1),
         elevation: 0,

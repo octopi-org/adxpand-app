@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:applify/login/login.dart';
 import 'package:drawerbehavior/drawerbehavior.dart';
-import 'package:applify/my-visualisations.dart';
-import 'package:applify/my-requests.dart';
-import 'package:applify/dashboard.dart';
+import 'package:applify/Menu/my-visualisations.dart';
+import 'package:applify/Menu/Requests/my-requests.dart';
+import 'package:applify/Menu/my-dashboard.dart';
+import 'package:applify/Menu/Settings/settings.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -23,23 +24,28 @@ class _MyHomePageState extends State<MyHomePage> {
     items: [
       new MenuItem(
         id: 0,
-        title: 'MY DASHBOARD',
+        title: ' MY DASHBOARD',
+        icon: Icons.dashboard,
       ),
       new MenuItem(
         id: 1,
-        title: 'MY VISUALISATIONS',
+        title: ' MY VISUALISATIONS',
+        icon: Icons.analytics,
       ),
       new MenuItem(
         id: 2,
-        title: 'REQUESTS STATUS',
+        title: ' REQUESTS STATUS',
+        icon: Icons.announcement,
       ),
       new MenuItem(
         id: 3,
-        title: 'SETTINGS',
+        title: ' SETTINGS',
+        icon: Icons.settings,
       ),
       new MenuItem(
         id: 4,
-        title: 'LOGOUT',
+        title: ' LOGOUT',
+        icon: Icons.exit_to_app,
       ),
     ]
   );
@@ -111,11 +117,15 @@ class _MyHomePageState extends State<MyHomePage> {
             direction: Direction.right,
             percentage: 0.6,
             menu: menu,
+            color: Colors.blue[300],
             selectedItemId: selectedMenuItemId,
             onMenuItemSelected: (itemId) {
               setState(() {
                 selectedMenuItemId = itemId;
               });
+              if (itemId == 4) {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()));
+              }
             },
             itemBuilder: (BuildContext context, MenuItem menuItem,
                 bool isSelected) {
@@ -127,15 +137,23 @@ class _MyHomePageState extends State<MyHomePage> {
                     .withOpacity(0.7)
                     : Colors.transparent,
                 padding: EdgeInsets.fromLTRB(24, 16, 24, 16),
-                child: Text(
-                  menuItem.title,
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .subtitle1
-                      ?.copyWith(
-                      color: isSelected ? Colors.black87 : Colors.white70),
-                ),
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      menuItem.icon,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      menuItem.title,
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .subtitle1
+                          ?.copyWith(
+                          color: isSelected ? Colors.black87 : Colors.white70),
+                    ),
+                  ]
+                )
               );
             }
         ),
@@ -148,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
         } else if (id == 2) {
           return MyRequestsPage();
         } else if (id == 3) {
-
+          return Settings();
         }
       },
     );
@@ -183,38 +201,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
   */
-}
-
-
-
-
-
-
-
-class Homescreen extends StatefulWidget {
-  Homescreen({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _HomescreenState createState() => _HomescreenState();
-}
-
-class _HomescreenState extends State<Homescreen> {
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: GestureDetector(
-        onPanUpdate: (details) {
-          if (details.delta.dx > 0) {
-
-          }
-        },
-        child: Text('i will never forgive the japanese'),
-      ),
-    );
-  }
 }
 
 
