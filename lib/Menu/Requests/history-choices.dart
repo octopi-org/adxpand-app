@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class RaiseRequestsPage extends StatefulWidget {
-  RaiseRequestsPage({Key key, this.title}) : super(key: key);
+class KWResearch extends StatefulWidget {
+  KWResearch({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _RaiseRequestsPageState createState() => _RaiseRequestsPageState();
+  _KWResearchState createState() => _KWResearchState();
 }
 
-class _RaiseRequestsPageState extends State<RaiseRequestsPage> {
+class _KWResearchState extends State<KWResearch> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -17,7 +17,7 @@ class _RaiseRequestsPageState extends State<RaiseRequestsPage> {
       appBar: AppBar(
           title: Container(
               alignment: Alignment.center,
-              child: Text("RaiseRequestsPageWidget")
+              child: Text("KWResearch")
           )
       ),
       body: Text('placeholder'),
