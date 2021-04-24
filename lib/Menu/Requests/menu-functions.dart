@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:applify/Menu/Requests/history-choices.dart';
+import 'package:applify/Menu/Requests/my-settings.dart';
 
 class MenuItemData {
   String itemName;
@@ -13,40 +14,40 @@ final customMenuItem = [aud, detRep, oth];
 
 final kWResearch = MenuItemData(
   itemName: 'KW Research',
-  pageRoute: KWResearch(),
+  pageRoute: HistoryPage('kwresearch'),
 );
 
 final adPerf = MenuItemData(
   itemName: 'Ad Performance',
-  pageRoute: KWResearch(),
+  pageRoute: HistoryPage('adperf'),
 );
 
 final adCopCh = MenuItemData(
   itemName: 'Ad Change History',
-  pageRoute: KWResearch(),
+  pageRoute: HistoryPage('adcopch'),
 );
 
 final newCamp = MenuItemData(
   itemName: 'New Campaign',
-  pageRoute: KWResearch(),
+  pageRoute: Settings('newcamp'),
 );
 
 final exAdSet = MenuItemData(
   itemName: 'Existing Ad Settings',
-  pageRoute: KWResearch(),
+  pageRoute: Settings('exadset'),
 );
 
 final aud = MenuItemData(
   itemName: 'Audit',
-  pageRoute: KWResearch(),
+  pageRoute: Settings('aud'),
 );
 
 final detRep = MenuItemData(
   itemName: 'Detailed Report',
-  pageRoute: KWResearch(),
+  pageRoute: Settings('detrep'),
 );
 
 final oth = MenuItemData(
   itemName: 'Others',
-  pageRoute: KWResearch(),
+  pageRoute: Settings('oth'),
 );

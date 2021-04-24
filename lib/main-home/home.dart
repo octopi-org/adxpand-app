@@ -166,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
         } else if (id == 2) {
           return MyRequestsPage();
         } else if (id == 3) {
-          return Settings();
+          return AppSettings();
         }
       },
     );
