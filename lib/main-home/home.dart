@@ -4,7 +4,7 @@ import 'package:applify/login/login.dart';
 import 'package:drawerbehavior/drawerbehavior.dart';
 import 'package:applify/Menu/my-visualisations.dart';
 import 'package:applify/Menu/Requests/my-requests.dart';
-import 'package:applify/Menu/my-dashboard.dart';
+import 'file:///C:/Users/samue/OneDrive/Documents/GitHub/applify/changes/lib/Version%200.2/my-dashboard.dart';
 import 'package:applify/Menu/Settings/settings.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -160,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
       builder: (context, id) {
         if (id == 0) {
-          return Dashboard();
+          return Text('temp');
         } else if (id == 1) {
           return MyVisualisationsPage();
         } else if (id == 2) {

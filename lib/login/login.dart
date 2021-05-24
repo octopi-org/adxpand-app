@@ -1,6 +1,6 @@
 import 'package:applify/login/forgot-password.dart';
 import 'package:flutter/material.dart';
-import 'package:applify/main-home/home.dart';
+import 'package:applify/Version 0.2/home-final.dart';
 
 
 class Login extends StatefulWidget {
@@ -222,7 +222,7 @@ class LoginState extends State<Login> {
     String user = _isIt2021(email, password);
     // Navigator.push(context, MaterialPageRoute(builder: (context)=> new HomePage(user)));
     if (user == "1") {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => new MyHomePage()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => new HomePage()));
     } else {
       _showAlertDialog("ERROR", "u fool");
       passwordController.clear();
@@ -251,7 +251,7 @@ class LoginState extends State<Login> {
   }
 
   _isIt2021(String email, String password) {
-    if (email == "abc@d.com" && password == "password") {
+    if (email == "a@b.c" && password == "d") {
       return "1";
     } else {
       return "0";

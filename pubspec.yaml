@@ -32,6 +32,8 @@ dependencies:
   cupertino_icons: ^1.0.0
   flare_flutter: ^3.0.0
   collection: ^1.15.0
+  curved_navigation_bar: ^0.3.7
+  flutter_stack_card: ^0.2.0+1
 
 dev_dependencies:
   flutter_test:

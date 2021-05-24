@@ -13,7 +13,18 @@ class _MyVisualisationsPageState extends State<MyVisualisationsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: InteractiveViewer(
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: <Color>[
+                  Color.fromRGBO(106, 145, 254, 1),
+                  Color.fromRGBO(75, 117, 235, 1),
+                ]
+            )
+          ),
+          child: InteractiveViewer(
                   constrained: false,
                   boundaryMargin: EdgeInsets.all(100),
                   minScale: 0.01,
@@ -33,7 +44,8 @@ class _MyVisualisationsPageState extends State<MyVisualisationsPage> {
                       },
                     )
                   )
-        ),
+          ),
+        )
     );
   }
 
@@ -49,7 +61,7 @@ class _MyVisualisationsPageState extends State<MyVisualisationsPage> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
             boxShadow: [
-              BoxShadow(color: Colors.blue[100], spreadRadius: 1),
+              BoxShadow(color: Colors.white, spreadRadius: 1),
             ],
           ),
           child: Text('Node ${a}')),
