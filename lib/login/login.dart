@@ -1,7 +1,7 @@
 import 'package:applify/login/forgot-password.dart';
 import 'package:flutter/material.dart';
-import 'package:applify/Version 0.2/home-final.dart';
-
+import 'package:applify/Version 0.2/HOME.dart';
+import 'package:http/http.dart';
 
 class Login extends StatefulWidget {
 
@@ -10,7 +10,8 @@ class Login extends StatefulWidget {
 }
 
 class LoginState extends State<Login> {
-  String email, password;
+  String email = '';
+  String password = '';
   final TextEditingController passwordController = TextEditingController();
   bool _obscureText = true;
 

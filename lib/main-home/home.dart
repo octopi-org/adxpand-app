@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:applify/login/login.dart';
 import 'package:drawerbehavior/drawerbehavior.dart';
-import 'package:applify/Menu/my-visualisations.dart';
+import 'package:applify/Version 0.2/VISUALIZATIONS.dart';
 import 'package:applify/Menu/Requests/my-requests.dart';
-import 'file:///C:/Users/samue/OneDrive/Documents/GitHub/applify/changes/lib/Version%200.2/my-dashboard.dart';
 import 'package:applify/Menu/Settings/settings.dart';
 
 class MyHomePage extends StatefulWidget {

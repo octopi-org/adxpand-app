@@ -33,8 +33,8 @@ class _SettingsState extends State<Settings> {
                         begin: Alignment(0.0, -1.0),
                         end: Alignment(0.0, 0.6),
                         colors: <Color>[
-                          Colors.lightBlueAccent,
-                          Colors.green
+                          Color.fromRGBO(106, 145, 254, 1),
+                          Color.fromRGBO(75, 117, 235, 1),
                         ]
                     )
                 ),
@@ -105,10 +105,7 @@ class _SettingsState extends State<Settings> {
                               ),
                               child: Ink(
                                   decoration: BoxDecoration(
-                                    gradient: LinearGradient(colors: [Color(0xff374ABE), Color(0xff64B6FF)],
-                                      begin: Alignment.centerLeft,
-                                      end: Alignment.centerRight,
-                                    ),
+                                    color: Colors.black87,
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                   child: Container(

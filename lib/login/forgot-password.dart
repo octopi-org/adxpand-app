@@ -7,7 +7,7 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class ForgotPasswordPageState extends State<ForgotPasswordPage> {
-  String email;
+  String email = '';
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +134,7 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
           builder: (_) =>
               AlertDialog(
                 title: Text("ERROR"),
-                content: Text(e.message),
+                content: Text("error.message is not working, need to debug bruv someoe just eat my balls alr"),
               ));
     }
   }

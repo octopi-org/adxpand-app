@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
-import 'package:applify/Menu/visualisation-classes.dart';
+import 'package:applify/Version 0.2/visualization-classes.dart';
 import 'dart:math';
 
 class MyVisualisationsPage extends StatefulWidget {
@@ -80,3 +80,8 @@ class _MyVisualisationsPageState extends State<MyVisualisationsPage> {
     builder = FruchtermanReingoldAlgorithm(iterations: 1000);
   }
 }
+
+//top left:
+//dropdown of dropdowns: priorization, nodes, edges
+//nodes and edges are metrics, prioritization kiv
+//help

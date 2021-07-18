@@ -26,19 +26,17 @@ class _HistoryPageState extends State<HistoryPage> {
               child: Text("History")
           )
       ),
-      body: InkWell(
-        splashColor: Colors.purple,
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment(0.0, -1.0),
-              end: Alignment(0.0, 0.6),
-              colors: <Color>[
-                Colors.lightBlueAccent,
-                Colors.green
-              ]
-            )
-          ),
+      body: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: <Color>[
+                      Color.fromRGBO(106, 145, 254, 1),
+                      Color.fromRGBO(75, 117, 235, 1),
+                    ]
+                )
+            ),
           child: Column(
               children: <Widget>[
                 SizedBox(
@@ -77,10 +75,10 @@ class _HistoryPageState extends State<HistoryPage> {
                     icon: const Icon(Icons.arrow_downward),
                     iconSize: 24,
                     elevation: 16,
-                    style: const TextStyle(color: Colors.deepPurple),
+                    style: const TextStyle(color: Colors.black),
                     underline: Container(
                       height: 2,
-                      color: Colors.deepPurpleAccent,
+                      color: Colors.white,
                     ),
                     onChanged: (newValue) {
                       setState(() {
@@ -122,10 +120,7 @@ class _HistoryPageState extends State<HistoryPage> {
                           ),
                           child: Ink(
                               decoration: BoxDecoration(
-                                gradient: LinearGradient(colors: [Colors.lightGreen, Colors.blueGrey],
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                ),
+                                color: Colors.deepPurple,
                                 borderRadius: BorderRadius.circular(30.0),
                               ),
                               child: Container(
@@ -148,10 +143,7 @@ class _HistoryPageState extends State<HistoryPage> {
                           ),
                           child: Ink(
                               decoration: BoxDecoration(
-                                gradient: LinearGradient(colors: [Colors.lightGreen, Colors.blueGrey],
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                ),
+                                color: Colors.black87,
                                 borderRadius: BorderRadius.circular(30.0),
                               ),
                               child: Container(
@@ -188,10 +180,7 @@ class _HistoryPageState extends State<HistoryPage> {
                       ),
                       child: Ink(
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(colors: [Color(0xff374ABE), Color(0xff64B6FF)],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                          ),
+                          color: Colors.deepPurple ,
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                         child: Container(
@@ -210,7 +199,6 @@ class _HistoryPageState extends State<HistoryPage> {
               ]
           )
         )
-      )
     );
   }
 

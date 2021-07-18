@@ -17,3 +17,8 @@ class _AppSettingsState extends State<AppSettings> {
     return Text('my settings yo');
   }
 }
+
+//campaign name
+//ad grp
+//ad
+//prioritization

@@ -1,8 +1,9 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:applify/Version 0.2/my-dashboard.dart';
-import 'package:applify/Menu/my-visualisations.dart';
+import 'package:applify/Version 0.2/REQUESTS.dart';
+import 'package:applify/Version 0.2/VISUALIZATIONS.dart';
+import 'package:applify/Version 0.2/DASHBOARD.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -16,7 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _index = 0;
   static List<Widget> _widgetOptions = <Widget>[
-    Text('dashboard'),
+    rainbowdashboard(),
     MyVisualisationsPage(),
     Requests(),
     Text('settings'),
@@ -47,6 +48,7 @@ class _HomePageState extends State<HomePage> {
       body: _widgetOptions[_index]
     );
   }
+
 }
 
 // 4B75EB 6A91FE 507BEE 5981F5
