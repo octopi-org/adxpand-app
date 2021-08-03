@@ -56,7 +56,7 @@ class _RequestsState extends State<Requests> with TickerProviderStateMixin {
           end: Alignment.bottomRight,
           colors: <Color>[
             Color.fromRGBO(106, 145, 254, 1),
-            Color.fromRGBO(75, 117, 235, 1),
+            Color.fromRGBO(89, 129, 245, 1),
           ]
         )
       ),

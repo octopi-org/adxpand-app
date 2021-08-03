@@ -26,7 +26,7 @@ class _ResultState extends State<Result> {
           }
         },
         */
-        child: Text('i will never forgive the japanese'),
+        child: Text('Placing A Placeholder In Place To Hold A Place'),
       ),
     );
   }

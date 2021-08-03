@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:applify/Menu/Requests/results-page.dart';
 
 class KeywordResearch extends StatefulWidget {
-  final String choice;
   final String title;
 
-  KeywordResearch(this.choice, {Key key, this.title}) : super(key: key);
+  KeywordResearch({Key key, this.title}) : super(key: key);
 
   @override
   _KeywordResearchState createState() => _KeywordResearchState();
@@ -21,6 +20,7 @@ class _KeywordResearchState extends State<KeywordResearch> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
             title: Container(
                 alignment: Alignment.center,
@@ -34,131 +34,174 @@ class _KeywordResearchState extends State<KeywordResearch> {
                         end: Alignment(0.0, 0.6),
                         colors: <Color>[
                           Color.fromRGBO(106, 145, 254, 1),
-                          Color.fromRGBO(75, 117, 235, 1),
+                          Color.fromRGBO(89, 129, 245, 1),
                         ]
                     )
                 ),
                 child: Column(
                     children: <Widget>[
                       SizedBox(
-                          height: size.height * 0.08
+                          height: size.height * 0.08,
+                          child: Center(
+                            child: Text('Campaign', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white))
+                          )
                       ),
-                      DropdownButton<String>(
-                        value: campaign,
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.deepPurple),
-                        underline: Container(
-                          height: 2,
-                          color: Colors.deepPurpleAccent,
+                      Center(child: Container(
+                          padding: EdgeInsets.only(right: 20, left: 20),
+                          alignment: Alignment.centerRight,
+                          width: size.width * 0.7,
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white),
+                          child: DropdownButton<String>(
+                            value: campaign,
+                            icon: const Icon(Icons.keyboard_arrow_down),
+                            iconSize: 24,
+                            elevation: 16,
+                            isExpanded: true,
+                            style: const TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold, fontSize: 20),
+                            onChanged: (String newValue) {
+                              setState(() {
+                                campaign = newValue;
+                              });
+                            },
+                            items: <String>['Shanghai E-Commerce Platforms', 'B2B Construction Materials Local', 'Fitness and Dietary Industry', 'Fashion and Accessories Local']
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value, overflow: TextOverflow.ellipsis),
+                              );
+                            }).toList(),
+                          ),
+                      )),
+                      if (campaign != null) SizedBox(
+                          height: size.height * 0.08,
+                          child: Center(
+                              child: Text('Ad Group', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white))
+                          )
+                      ),
+                      if (campaign != null) Center(child: Container(
+                        padding: EdgeInsets.only(right: 20, left: 20),
+                        alignment: Alignment.centerRight,
+                        width: size.width * 0.7,
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white),
+                        child: DropdownButton<String>(
+                          value: adgroup,
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          iconSize: 24,
+                          elevation: 16,
+                          isExpanded: true,
+                          style: const TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold, fontSize: 20),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              adgroup = newValue;
+                            });
+                          },
+                          items: <String>['2021 Summer', '2021 Spring', '2020 Winter', '2020 Fall']
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value, overflow: TextOverflow.ellipsis),
+                            );
+                          }).toList(),
                         ),
-                        onChanged: (String newValue) {
-                          setState(() {
-                            campaign = newValue;
-                          });
-                        },
-                        items: <String>['One', 'Two', 'Free', 'Four']
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
+                      )),
+                      if (adgroup != null) SizedBox(
+                          height: size.height * 0.08,
+                          child: Center(
+                              child: Text('Ad', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white))
+                          )
                       ),
-                      SizedBox(
-                          height: size.height * 0.08
-                      ),
-                      if (campaign != null) DropdownButton<String>(
-                        value: adgroup,
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.deepPurple),
-                        underline: Container(
-                          height: 2,
-                          color: Colors.deepPurpleAccent,
+                      if (adgroup != null) Center(child: Container(
+                        padding: EdgeInsets.only(right: 20, left: 20),
+                        alignment: Alignment.centerRight,
+                        width: size.width * 0.7,
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white),
+                        child: DropdownButton<String>(
+                          value: ad,
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          iconSize: 24,
+                          elevation: 16,
+                          isExpanded: true,
+                          style: const TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold, fontSize: 20),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              ad = newValue;
+                            });
+                          },
+                          items: <String>['June Flash Sale', 'CNY Special Season Promo', 'Bubble Tea and Extra Deal', 'Lee Seong-jin Adverts']
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value, overflow: TextOverflow.ellipsis),
+                            );
+                          }).toList(),
                         ),
-                        onChanged: (String newValue) {
-                          setState(() {
-                            adgroup = newValue;
-                          });
-                        },
-                        items: <String>['One', 'Two', 'Free', 'Four']
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
+                      )),
+                      if (ad != null) SizedBox(
+                          height: size.height * 0.08,
+                          child: Center(
+                              child: Text('Keyword(s)', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white))
+                          )
                       ),
-                      SizedBox(
-                          height: size.height * 0.08
-                      ),
-                      if (adgroup != null) DropdownButton<String>(
-                        value: ad,
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.deepPurple),
-                        underline: Container(
-                          height: 2,
-                          color: Colors.deepPurpleAccent,
+                      if (ad != null) Container(
+                        padding: EdgeInsets.only(left: 20),
+                        width: size.width * 0.9,
+                        height: size.height * 0.15,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.white,
                         ),
-                        onChanged: (String newValue) {
-                          setState(() {
-                            ad = newValue;
-                          });
-                        },
-                        items: <String>['One', 'Two', 'Free', 'Four']
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
-                      SizedBox(
-                          height: size.height * 0.08
-                      ),
-                      if (ad != null) TextField(
-                        keyboardType: TextInputType.text,
-                        onChanged: (value) => search = value,
+                        child: Center(
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                                hintText: 'Separate individual keywords with a comma and without spaces',
+                            ),
+                            keyboardType: TextInputType.text,
+                            onChanged: (value) => search = value,
+                          ),
+                        ),
                       ),
                       SizedBox(
                           height: size.height * 0.08,
                       ),
-                      Container(
-                          child: ElevatedButton(
-                              onPressed: () {
-                                /*Navigator.pushReplacement(
+                      if (search != null) Row(
+                        children: [
+                          SizedBox(
+                            width: size.width * 0.5,
+                          ),
+                          Container(
+                              padding: EdgeInsets.only(left: 20, right: 20),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: Color.fromRGBO(254, 180, 48, 1),
+                              ),
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    /*Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => Result(actionReq, null, null, comments)
                                     )
                                 );*/
-                              },
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
-                                padding: EdgeInsets.all(0.0),
-                              ),
-                              child: Ink(
-                                  decoration: BoxDecoration(
-                                    color: Colors.black87,
-                                    borderRadius: BorderRadius.circular(30.0),
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
+                                    padding: EdgeInsets.all(5.0),
+                                    primary: Color.fromRGBO(254, 157, 89, 1),
                                   ),
                                   child: Container(
                                     alignment: Alignment.center,
                                     child: Text(
                                       "LET'S GO",
-                                      textAlign: TextAlign.center,
                                       style: TextStyle(
-                                          color: Colors.white
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
                                       ),
                                     ),
                                   )
                               )
                           )
+                        ]
                       )
                     ]
                 )

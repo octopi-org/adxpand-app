@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:applify/Version 0.2/REQUESTS.dart';
 import 'package:applify/Version 0.2/VISUALIZATIONS.dart';
-import 'package:applify/Version 0.2/DASHBOARD.dart';
+import 'package:applify/Version 0.2/dashboard/DASHBOARD.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);

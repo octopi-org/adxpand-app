@@ -1,15 +1,23 @@
+import 'package:applify/Version%200.2/db/db.dart';
 import 'package:applify/login/forgot-password.dart';
 import 'package:flutter/material.dart';
 import 'package:applify/Version 0.2/HOME.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:applify/Version 0.2/models/userModel.dart';
 
 class Login extends StatefulWidget {
+  final UserModel userModel;
+
+  const Login({Key key, this.userModel}) : super(key:key);
 
   @override
   LoginState createState() => new LoginState();
 }
 
 class LoginState extends State<Login> {
+  bool oldUser = false;
+  String stateManager = '';
   String email = '';
   String password = '';
   final TextEditingController passwordController = TextEditingController();
@@ -23,11 +31,19 @@ class LoginState extends State<Login> {
 
   @override
   void dispose() {
+    UserDBProvider.db.close();
     // Clean up the controller when the widget is removed from the
     // widget tree.
     passwordController.dispose();
     super.dispose();
   }
+
+  Future readDb() async {
+    if (UserDBProvider.db.readAllCards() != null) {
+      oldUser = true;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -218,14 +234,16 @@ class LoginState extends State<Login> {
     );
   }
 
-  void signIn() {
+  Future<void> signIn() async{
     password = passwordController.text;
-    String user = _isIt2021(email, password);
+    // String user = _isIt2021(email, password);
     // Navigator.push(context, MaterialPageRoute(builder: (context)=> new HomePage(user)));
-    if (user == "1") {
+    //await _fetchName();
+    stateManager = 'success';
+    if (stateManager == "success") {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => new HomePage()));
     } else {
-      _showAlertDialog("ERROR", "u fool");
+      _showAlertDialog("Unsuccessful", "Incorrect username or password.");
       passwordController.clear();
     }
   }
@@ -251,11 +269,26 @@ class LoginState extends State<Login> {
     );
   }
 
-  _isIt2021(String email, String password) {
-    if (email == "a@b.c" && password == "d") {
-      return "1";
+  Future _fetchName() async{
+    List<UserModel> firstRead;
+    //double read0, read1, read2, read3, read4, read5, read6, read7, read8;
+
+    final queryParameters = {
+      'email': '$email',
+      'password': '$password',
+    };
+    final uri = Uri.https('betatest-api.herokuapp.com', '/appgetview', queryParameters);
+    //final response = await http.get(link, headers: {"x-api-key": WasteLessData.userKey});
+    final response = await http.get(uri);
+    if (response.statusCode == 200) {
+      //return json.decode(response.body)["username"].toString();
+      print(response.statusCode);
+      stateManager = jsonDecode(response.body)['status'];
+      firstRead = (jsonDecode(response.body)['data'] as List).map((dict) => UserModel.fromMapNew(dict)).toList();
+      //print((jsonDecode(response.body)['data'] as List)[0]);
+      await UserDBProvider.db.createNewCopy(firstRead[0]);
     } else {
-      return "0";
+      throw Exception('Failed to load data');
     }
   }
 

@@ -1,6 +1,13 @@
+import 'package:applify/Pseudo-VCS/ad-change-history.dart';
 import 'package:flutter/material.dart';
-import 'package:applify/Menu/Requests/history-choices.dart';
-import 'package:applify/Menu/Requests/my-settings.dart';
+import 'package:applify/Version 0.2/Requests-Subpages/keyword-research.dart';
+import 'package:applify/Version 0.2/Requests-Subpages/ad-performance.dart';
+import 'package:applify/Version 0.2/Requests-Subpages/ad-change-history.dart';
+import 'package:applify/Version 0.2/Requests-Subpages/new-campaign.dart';
+import 'package:applify/Version 0.2/Requests-Subpages/existing-ad-settings.dart';
+import 'package:applify/Version 0.2/Requests-Subpages/audit.dart';
+import 'package:applify/Version 0.2/Requests-Subpages/detailed-report.dart';
+import 'package:applify/Version 0.2/Requests-Subpages/others.dart';
 
 List<CardData> cardList = [historyCard, changeCard, customCard];
 
@@ -39,40 +46,40 @@ final customMenuItem = [aud, detRep, oth];
 
 final kWResearch = MenuItemData(
   itemName: 'KW Research',
-  pageRoute: HistoryPage('kwresearch'),
+  pageRoute: KeywordResearch(),
 );
 
 final adPerf = MenuItemData(
   itemName: 'Ad Performance',
-  pageRoute: HistoryPage('adperf'),
+  pageRoute: AdPerformance(),
 );
 
 final adCopCh = MenuItemData(
   itemName: 'Ad Change History',
-  pageRoute: HistoryPage('adcopch'),
+  pageRoute: AdChangeHistoryPage(),
 );
 
 final newCamp = MenuItemData(
   itemName: 'New Campaign',
-  pageRoute: Settings('newcamp'),
+  pageRoute: NewCampaign(),
 );
 
 final exAdSet = MenuItemData(
   itemName: 'Existing Ad Settings',
-  pageRoute: Settings('exadset'),
+  pageRoute: ExistingAdSettings(),
 );
 
 final aud = MenuItemData(
   itemName: 'Audit',
-  pageRoute: Settings('aud'),
+  pageRoute: Audit(),
 );
 
 final detRep = MenuItemData(
   itemName: 'Detailed Report',
-  pageRoute: Settings('detrep'),
+  pageRoute: DetailedReport(),
 );
 
 final oth = MenuItemData(
   itemName: 'Others',
-  pageRoute: Settings('oth'),
+  pageRoute: Others(),
 );

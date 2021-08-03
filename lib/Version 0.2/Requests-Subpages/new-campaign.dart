@@ -3,10 +3,9 @@ import 'package:applify/Menu/Requests/results-page.dart';
 import 'package:flutter/services.dart';
 
 class NewCampaign extends StatefulWidget {
-  final String choice;
   final String title;
 
-  NewCampaign(this.choice, {Key key, this.title}) : super(key: key);
+  NewCampaign({Key key, this.title}) : super(key: key);
 
   @override
   _NewCampaignState createState() => _NewCampaignState();
@@ -41,7 +40,7 @@ class _NewCampaignState extends State<NewCampaign> {
                     end: Alignment(0.0, 0.6),
                     colors: <Color>[
                       Color.fromRGBO(106, 145, 254, 1),
-                      Color.fromRGBO(75, 117, 235, 1),
+                      Color.fromRGBO(89, 129, 245, 1),
                     ]
                 )
             ),
@@ -50,80 +49,47 @@ class _NewCampaignState extends State<NewCampaign> {
                   SizedBox(
                       height: size.height * 0.08
                   ),
-                  DropdownButton<String>(
-                    value: campaign,
-                    icon: const Icon(Icons.arrow_downward),
-                    iconSize: 24,
-                    elevation: 16,
-                    style: const TextStyle(color: Colors.deepPurple),
-                    underline: Container(
-                      height: 2,
-                      color: Colors.deepPurpleAccent,
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons.person),
+                      hintText: 'Your campaign name',
                     ),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        campaign = newValue;
-                      });
+                    onSaved: (String value) {
+                      campaign = value;
                     },
-                    items: <String>['One', 'Two', 'Free', 'Four']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
+                    validator: (String value) {
+                      return (value != null && value.length > 50) ? 'You are ${value.length - 50} words over the limit' : null;
+                    },
                   ),
                   SizedBox(
                       height: size.height * 0.08
                   ),
-                  if (campaign != null) DropdownButton<String>(
-                    value: adgroup,
-                    icon: const Icon(Icons.arrow_downward),
-                    iconSize: 24,
-                    elevation: 16,
-                    style: const TextStyle(color: Colors.deepPurple),
-                    underline: Container(
-                      height: 2,
-                      color: Colors.deepPurpleAccent,
+                  if (campaign != null) TextFormField(
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons.person),
+                      hintText: 'Your ad group name',
                     ),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        adgroup = newValue;
-                      });
+                    onSaved: (String value) {
+                      adgroup = value;
                     },
-                    items: <String>['One', 'Two', 'Free', 'Four']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
+                    validator: (String value) {
+                      return (value != null && value.length > 50) ? 'You are ${value.length - 50} words over the limit' : null;
+                    },
                   ),
                   SizedBox(
                       height: size.height * 0.08
                   ),
-                  if (adgroup != null) DropdownButton<String>(
-                    value: ad,
-                    icon: const Icon(Icons.arrow_downward),
-                    iconSize: 24,
-                    elevation: 16,
-                    style: const TextStyle(color: Colors.deepPurple),
-                    underline: Container(
-                      height: 2,
-                      color: Colors.deepPurpleAccent,
+                  if (adgroup != null) TextFormField(
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons.person),
+                      hintText: 'Your ad name',
                     ),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        ad = newValue;
-                      });
+                    onSaved: (String value) {
+                      ad = value;
                     },
-                    items: <String>['One', 'Two', 'Free', 'Four']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
+                    validator: (String value) {
+                      return (value != null && value.length > 50) ? 'You are ${value.length - 50} words over the limit' : null;
+                    },
                   ),
                   SizedBox(
                       height: size.height * 0.08
