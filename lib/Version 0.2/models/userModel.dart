@@ -1,3 +1,5 @@
+/*
+
 final String userModel = 'UserModel';
 
 class userModelFields {
@@ -162,3 +164,5 @@ List<Kard> kards = [
   search_budget_lost_absolute_top_impression_share,
   all_conversions_from_int_rate
 ];
+
+*/

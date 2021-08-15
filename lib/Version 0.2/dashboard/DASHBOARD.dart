@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:applify/Version 0.2/db/db.dart';
-import 'package:applify/Version 0.2/models/userModel.dart';
+import 'package:applify/Version 0.2/db/new-db.dart';
+import 'package:applify/Version 0.2/models/note.dart';
 
 class rainbowdashboard extends StatefulWidget {
   @override

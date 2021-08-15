@@ -1,3 +1,5 @@
+/*
+
 import 'package:path/path.dart' as Path;
 import 'package:sqflite/sqflite.dart';
 import 'package:applify/Version 0.2/models/userModel.dart';
@@ -265,3 +267,5 @@ class UserDBProvider {
     db.close();
   }
 }
+
+*/

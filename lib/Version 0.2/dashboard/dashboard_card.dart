@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:applify/Version 0.2/models/userModel.dart';
+import 'package:applify/Version 0.2/models/note.dart';
 
 final _lightColors = [
   Colors.amber.shade300,

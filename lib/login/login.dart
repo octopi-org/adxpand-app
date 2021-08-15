@@ -1,15 +1,17 @@
-import 'package:applify/Version%200.2/db/db.dart';
+import 'package:applify/Version 0.2/db/new-db.dart';
 import 'package:applify/login/forgot-password.dart';
 import 'package:flutter/material.dart';
 import 'package:applify/Version 0.2/HOME.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:applify/Version 0.2/models/userModel.dart';
+import 'dart:async';
+import 'package:applify/Version 0.2/models/note.dart';
+import 'package:sqflite/sqflite.dart';
 
 class Login extends StatefulWidget {
-  final UserModel userModel;
+  final Note note;
 
-  const Login({Key key, this.userModel}) : super(key:key);
+  const Login({Key key, this.note}) : super(key:key);
 
   @override
   LoginState createState() => new LoginState();
@@ -31,17 +33,11 @@ class LoginState extends State<Login> {
 
   @override
   void dispose() {
-    UserDBProvider.db.close();
+    NotesDatabase.instance.close();
     // Clean up the controller when the widget is removed from the
     // widget tree.
     passwordController.dispose();
     super.dispose();
-  }
-
-  Future readDb() async {
-    if (UserDBProvider.db.readAllCards() != null) {
-      oldUser = true;
-    }
   }
 
   @override
@@ -239,8 +235,9 @@ class LoginState extends State<Login> {
     // String user = _isIt2021(email, password);
     // Navigator.push(context, MaterialPageRoute(builder: (context)=> new HomePage(user)));
     //await _fetchName();
-    stateManager = 'success';
+    _fetchName();
     if (stateManager == "success") {
+      deployKards();
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => new HomePage()));
     } else {
       _showAlertDialog("Unsuccessful", "Incorrect username or password.");
@@ -270,8 +267,8 @@ class LoginState extends State<Login> {
   }
 
   Future _fetchName() async{
-    List<UserModel> firstRead;
-    //double read0, read1, read2, read3, read4, read5, read6, read7, read8;
+    int _id = 0;
+    Map data;
 
     final queryParameters = {
       'email': '$email',
@@ -283,10 +280,28 @@ class LoginState extends State<Login> {
     if (response.statusCode == 200) {
       //return json.decode(response.body)["username"].toString();
       print(response.statusCode);
-      stateManager = jsonDecode(response.body)['status'];
-      firstRead = (jsonDecode(response.body)['data'] as List).map((dict) => UserModel.fromMapNew(dict)).toList();
+      stateManager = await jsonDecode(response.body)['status'];
+      data = await (jsonDecode(response.body)['data'] as List)[0] as Map;
+
+      NotesDatabase.instance.createNewCopy(Note.fromJsonNew(data, _id));
+      /*
+      data.map((dict) {
+        print('One dictionary added');
+        NotesDatabase.instance.createNewCopy(Note.fromJsonNew(dict, _id));
+        print('Success! Currently making new copy.');
+        if (_id == 0) {
+
+        }
+      }).toList();
+      */
+      Timer(Duration(seconds: 10), () async {
+        print("Yeah, this line is printed after 10 seconds");
+        List singleDict = await NotesDatabase.instance.readAllNotes();
+        print('One: ${singleDict[0]['search_impression_share']}, two: ${singleDict[0]['search_exact_match_impression_share']}');
+      });
+      //firstRead = (jsonDecode(response.body)['data'] as List).map((dict) => Note.fromJsonNew(dict)).toList();
       //print((jsonDecode(response.body)['data'] as List)[0]);
-      await UserDBProvider.db.createNewCopy(firstRead[0]);
+      //await NotesDatabase.instance.createNewCopy(firstRead[0]);
     } else {
       throw Exception('Failed to load data');
     }
